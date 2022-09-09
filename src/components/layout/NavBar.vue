@@ -6,7 +6,7 @@
             </a>
 
             <div class="w-auto">
-                <button class="w-10 h-10 rounded-full text-2xl text-white bg-blue-400 ">
+                <button class="w-10 h-10 rounded-full text-3xl text-white bg-blue-400">
                     +
                 </button>
             </div>

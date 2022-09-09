@@ -4,7 +4,8 @@ import { v4 as uuidv4 } from 'uuid'
 export const useStoreNotes = defineStore('storeNotes', {
     state: () => {
         return { 
-            notes: []
+            notes: [],
+            noteId: ''
         }
     },
     actions: {
@@ -23,5 +24,12 @@ export const useStoreNotes = defineStore('storeNotes', {
 
             this.notes.unshift(note)
         },
+        selectNote(id) {
+            this.noteId = id
+        },
+        deleteNote(id) {
+            const i = this.notes.findIndex(note => note.id === id)
+            this.notes.splice(i, 1)
+        }
     },
 })

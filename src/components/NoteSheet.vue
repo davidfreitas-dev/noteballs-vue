@@ -1,7 +1,7 @@
 <template>
     <div class="note">
         <div class="p-2">
-            <textarea ref="textarea" v-model="note.content" name="" id="" cols="30" rows="5" :disabled="note.readMode" class="note-content"></textarea>
+            <textarea ref="textarea" v-model="note.content" :disabled="note.readMode" rows="5" class="note-content"></textarea>
         </div>
         <div class="footer">
             <p>
@@ -11,7 +11,7 @@
                 <button @click="handleEdit">
                     <font-awesome-icon :icon="btnIconClass" class="text-xs" />
                 </button>
-                <button>
+                <button @click="handleDeleteNote">
                     <font-awesome-icon icon="fa-solid fa-trash" class="text-xs" />
                 </button>
             </span>
@@ -20,7 +20,9 @@
 </template>
 
 <script setup>  
-    import { ref, computed, onMounted } from 'vue'  
+    import { ref, computed, onMounted } from 'vue'
+
+    const emit = defineEmits(['selectNote'])
 
     const props = defineProps(['note'])
 
@@ -28,17 +30,21 @@
         props.note.readMode = !props.note.readMode
     }
 
+    const btnIconClass = computed(() => {
+        return props.note.readMode 
+            ? 'fa-solid fa-pen' 
+            : 'fa-solid fa-check'
+    })
+
     const textarea = ref(null)
 
     onMounted(() => {
         textarea.value.focus()
     })
 
-    const btnIconClass = computed(() => {
-        return props.note.readMode 
-            ? 'fa-solid fa-pen' 
-            : 'fa-solid fa-check'
-    })
+    const handleDeleteNote = () => {
+        emit('selectNote', props.note.id)
+    }
 </script>
 
 <style scoped>

@@ -12,7 +12,7 @@
                         <button class="btn-cancel" type="button" @click="toggleModal()">
                             Cancel
                         </button>
-                        <button class="btn-confirm" type="button" @click="toggleModal()">
+                        <button class="btn-confirm" type="button" @click="handleConfirm">
                             Confirm
                         </button>
                     </div>
@@ -26,10 +26,17 @@
 <script setup>
     import { ref } from 'vue'
 
+    const emit = defineEmits(['deleteNote'])
+
     const showModal = ref(false)
 
     const toggleModal = () => {
         showModal = !showModal
+    }
+
+    const handleConfirm = () => {
+        emit('deleteNote')
+        toggleModal()
     }
 </script>
 

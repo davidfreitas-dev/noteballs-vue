@@ -26,7 +26,7 @@
 <script setup>
     import { ref } from 'vue'
 
-    const showModal = ref(true)
+    const showModal = ref(false)
 
     const toggleModal = () => {
         showModal = !showModal

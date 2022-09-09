@@ -1,5 +1,5 @@
 <template>
-  <NavBar />
+  <NavBar @handleAddNote="handleAddNote" />
   
   <div class="container">
     <RouterView />    
@@ -7,7 +7,15 @@
 </template>
 
 <script setup>
-  import NavBar from '@/components/layout/NavBar.vue'
+  import NavBar from '@/components/layout/NavBar.vue' 
+   
+  import { useStoreNotes } from '@/stores/storeNotes'
+  
+  const storeNotes = useStoreNotes()
+  
+  const handleAddNote = () => {
+    storeNotes.addNote()
+  }  
 </script>
 
 <style scoped>

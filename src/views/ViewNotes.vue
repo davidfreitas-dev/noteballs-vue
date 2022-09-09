@@ -1,9 +1,8 @@
 <template>
   <div class="container">
-    <NoteSheet />
-    <NoteSheet />
-    <NoteSheet />
-    <NoteSheet />
+    <template v-for="note in storeNotes.notes">
+      <NoteSheet :note="note" />
+    </template>
   </div>
   
   <ConfirmModal />
@@ -11,11 +10,15 @@
 
 <script setup>
   import NoteSheet from '@/components/layout/NoteSheet.vue'
-  import ConfirmModal from '@/components/layout/ConfirmModal.vue'
+  import ConfirmModal from '@/components/layout/ConfirmModal.vue'  
+  
+  import { useStoreNotes } from '@/stores/storeNotes';
+
+  const storeNotes = useStoreNotes()
 </script>
 
 <style scoped>
   .container {
-    @apply flex justify-between items-center flex-wrap
+    @apply flex items-center flex-wrap
   }
 </style>

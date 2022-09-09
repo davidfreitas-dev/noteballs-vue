@@ -1,12 +1,11 @@
 <template>
     <div class="note">
         <div class="p-2">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-            Reprehenderit distinctio maxime facere sequi ipsa voluptates unde quas inventore!
+            {{ note.content }}
         </div>
         <div class="footer">
             <p>
-                May 15
+                {{ note.dtRegister }}
             </p>
             <span class="actions">
                 <button>
@@ -21,12 +20,12 @@
 </template>
 
 <script setup>
-
+    const props = defineProps(['note'])
 </script>
 
 <style scoped>
 .note {
-    @apply bg-amber-200 p-3 rounded-2xl shadow-lg mb-3.5 w-full sm:w-[49%] md:w-[32%] lg:w-[24%]
+    @apply bg-amber-200 flex flex-col justify-between rounded-2xl shadow-lg p-3 mx-1 mb-3.5 w-full sm:w-[47%] md:w-[32%] lg:w-[23%] h-[230px]
 }
 .footer {
     @apply flex justify-between items-center mt-5
@@ -35,6 +34,6 @@
     @apply font-light text-sm px-2
 }
 .actions button {
-    @apply bg-black text-white w-8 h-8 mr-1 rounded-full
+    @apply bg-zinc-800 hover:bg-zinc-900 text-white w-8 h-8 mr-1 rounded-full
 }
 </style>

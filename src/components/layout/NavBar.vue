@@ -8,7 +8,7 @@
             </a>
 
             <div class="nav-links">
-                <button>
+                <button @click="$emit('handleAddNote')">
                     <font-awesome-icon icon="fa-solid fa-plus" class="text-xl" />
                 </button>
             </div>

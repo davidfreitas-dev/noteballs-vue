@@ -9,11 +9,10 @@
 </template>
 
 <script setup>
-  import NoteSheet from '@/components/layout/NoteSheet.vue'
-  import ConfirmModal from '@/components/layout/ConfirmModal.vue'  
-  
   import { useStoreNotes } from '@/stores/storeNotes';
-
+  import NoteSheet from '@/components/NoteSheet.vue'
+  import ConfirmModal from '@/components/ConfirmModal.vue'  
+  
   const storeNotes = useStoreNotes()
 </script>
 

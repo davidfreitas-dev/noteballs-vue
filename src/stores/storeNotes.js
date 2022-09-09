@@ -17,6 +17,7 @@ export const useStoreNotes = defineStore('storeNotes', {
             const note = {
                 id: uuidv4(),
                 content: '',
+                readMode: false,
                 dtRegister: `${day} de ${months[month]}`
             }
 

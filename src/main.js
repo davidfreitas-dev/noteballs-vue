@@ -10,10 +10,10 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 /* import specific icons */
-import { faTrash, faPlus, faPen } from '@fortawesome/free-solid-svg-icons'
+import { faTrash, faPlus, faPen, faCheck } from '@fortawesome/free-solid-svg-icons'
 
 /* add icons to the library */
-library.add(faTrash, faPlus, faPen)
+library.add(faTrash, faPlus, faPen, faCheck)
 
 import './assets/css/index.css'
 

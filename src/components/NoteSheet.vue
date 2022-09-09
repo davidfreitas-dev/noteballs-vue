@@ -1,15 +1,15 @@
 <template>
     <div class="note">
         <div class="p-2">
-            {{ note.content }}
+            <textarea ref="textarea" v-model="note.content" name="" id="" cols="30" rows="5" :disabled="note.readMode" class="note-content"></textarea>
         </div>
         <div class="footer">
             <p>
                 {{ note.dtRegister }}
             </p>
             <span class="actions">
-                <button>
-                    <font-awesome-icon icon="fa-solid fa-pen" class="text-xs" />
+                <button @click="handleEdit">
+                    <font-awesome-icon :icon="btnIconClass" class="text-xs" />
                 </button>
                 <button>
                     <font-awesome-icon icon="fa-solid fa-trash" class="text-xs" />
@@ -19,13 +19,34 @@
     </div>
 </template>
 
-<script setup>
+<script setup>  
+    import { ref, computed, onMounted } from 'vue'  
+
     const props = defineProps(['note'])
+
+    const handleEdit = () => {
+        props.note.readMode = !props.note.readMode
+    }
+
+    const textarea = ref(null)
+
+    onMounted(() => {
+        textarea.value.focus()
+    })
+
+    const btnIconClass = computed(() => {
+        return props.note.readMode 
+            ? 'fa-solid fa-pen' 
+            : 'fa-solid fa-check'
+    })
 </script>
 
 <style scoped>
 .note {
     @apply bg-amber-200 flex flex-col justify-between rounded-2xl shadow-lg p-3 mx-1 mb-3.5 w-full sm:w-[47%] md:w-[32%] lg:w-[23%] h-[230px]
+}
+.note-content {
+    @apply bg-amber-200 w-full resize-none focus:outline-none
 }
 .footer {
     @apply flex justify-between items-center mt-5

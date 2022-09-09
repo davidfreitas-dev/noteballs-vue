@@ -7,9 +7,9 @@
 </template>
 
 <script setup>
-  import NavBar from '@/components/layout/NavBar.vue' 
-   
   import { useStoreNotes } from '@/stores/storeNotes'
+  
+  import NavBar from '@/components/NavBar.vue' 
   
   const storeNotes = useStoreNotes()
   

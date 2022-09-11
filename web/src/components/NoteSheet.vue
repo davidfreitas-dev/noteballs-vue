@@ -4,11 +4,14 @@
             <textarea 
                 rows="5" 
                 ref="textarea" 
+                v-if="!note.readMode" 
                 v-model="note.content" 
-                :disabled="note.readMode" 
                 class="note-content"
             >
             </textarea>
+            <p v-if="note.readMode">
+                {{ note.content }}
+            </p>
         </div>
         <div class="footer">
             <p>
@@ -42,6 +45,12 @@
             : 'fa-solid fa-check'
     })
 
+    const textarea = ref(null)
+
+    onMounted(() => {
+        textarea.value.focus()
+    })
+
     const handleEdit = () => {
         props.note.readMode = !props.note.readMode
     }
@@ -50,12 +59,6 @@
         storeNotes.selectNote(props.note.id)
         emit('deleteNote')
     }
-
-    const textarea = ref(null)
-
-    onMounted(() => {
-        textarea.value.focus()
-    })
 </script>
 
 <style scoped>

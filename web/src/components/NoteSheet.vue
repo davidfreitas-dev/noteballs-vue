@@ -74,6 +74,9 @@
 .note-content textarea {
     @apply bg-amber-200 placeholder:text-amber-500 w-full resize-none focus:outline-none
 }
+.note-content p {
+    @apply whitespace-pre-line
+}
 .footer {
     @apply flex justify-between items-center mt-5
 }

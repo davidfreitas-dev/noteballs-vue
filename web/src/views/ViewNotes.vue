@@ -29,6 +29,7 @@
     
     if (confirm) {
       storeNotes.deleteNote(storeNotes.selectedNoteId)
+      storeNotes.setLocalNotes()
     }
   }
 </script>

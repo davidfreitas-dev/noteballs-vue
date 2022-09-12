@@ -1,12 +1,11 @@
 <template>
     <div class="note">
-        <div class="p-2">
+        <div class="note-content">
             <textarea 
-                rows="5" 
-                ref="textarea" 
                 v-if="!note.readMode" 
-                v-model="note.content" 
-                class="note-content"
+                v-model="note.content"
+                placeholder="Digite aqui..."
+                rows="5"
             >
             </textarea>
             <p v-if="note.readMode">
@@ -30,7 +29,8 @@
 </template>
 
 <script setup>  
-    import { ref, computed, onMounted } from 'vue'    
+    import { computed, watch } from 'vue'  
+
     import { useStoreNotes } from '@/stores/storeNotes' 
 
     const storeNotes = useStoreNotes()
@@ -45,10 +45,10 @@
             : 'fa-solid fa-check'
     })
 
-    const textarea = ref(null)
-
-    onMounted(() => {
-        textarea.value.focus()
+    watch(() => props.note.readMode, (newValue) => {
+        if (newValue) {
+            storeNotes.setLocalNotes()
+        }
     })
 
     const handleEdit = () => {
@@ -66,7 +66,10 @@
     @apply bg-amber-200 flex flex-col justify-between rounded-2xl shadow-lg p-3 mx-1 mb-3.5 w-full sm:w-[47%] md:w-[32%] lg:w-[23%] h-[230px]
 }
 .note-content {
-    @apply bg-amber-200 w-full resize-none focus:outline-none
+    @apply p-2
+}
+.note-content textarea {
+    @apply bg-amber-200 placeholder:text-amber-500 w-full resize-none focus:outline-none
 }
 .footer {
     @apply flex justify-between items-center mt-5

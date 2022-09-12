@@ -18,7 +18,7 @@
 
 <style scoped>
 .navbar {
-    @apply p-3 bg-blue-500
+    @apply px-5 py-3 bg-blue-500
 }
 .container {
     @apply flex flex-wrap justify-between items-center mx-auto

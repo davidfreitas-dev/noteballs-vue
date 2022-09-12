@@ -9,6 +9,15 @@ export const useStoreNotes = defineStore('storeNotes', {
         }
     },
     actions: {
+        selectNote(id) {
+            this.selectedNoteId = id
+        },
+        setLocalNotes() {
+            localStorage.setItem('notes', JSON.stringify(this.notes))
+        },
+        setNotes(notes) {
+            this.notes = notes
+        },
         addNote() {
             const date = new Date();
             const day = String(date.getDate()).padStart(2, '0')
@@ -23,9 +32,6 @@ export const useStoreNotes = defineStore('storeNotes', {
             }
 
             this.notes.unshift(note)
-        },
-        selectNote(id) {
-            this.selectedNoteId = id
         },
         deleteNote(id) {
             const i = this.notes.findIndex(note => note.id === id)

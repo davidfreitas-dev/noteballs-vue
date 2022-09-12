@@ -8,6 +8,7 @@
                 rows="5"
             >
             </textarea>
+
             <p v-if="note.readMode">
                 {{ note.content }}
             </p>
@@ -16,10 +17,12 @@
             <p>
                 {{ note.dtRegister }}
             </p>
+
             <span class="actions">
                 <button @click="handleEdit">
                     <font-awesome-icon :icon="btnIconClass" class="text-xs" />
                 </button>
+                
                 <button @click="handleDeleteNote">
                     <font-awesome-icon icon="fa-solid fa-trash" class="text-xs" />
                 </button>

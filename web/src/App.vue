@@ -7,10 +7,11 @@
 </template>
 
 <script setup>
+  /* COMPONENTS IMPORTS */
   import NavBar from '@/components/NavBar.vue' 
 
-  import { ref, onMounted } from 'vue'
-  
+  /* IMPORTS */
+  import { ref, onMounted } from 'vue'  
   import { useStoreNotes } from '@/stores/storeNotes'
   
   const storeNotes = useStoreNotes()

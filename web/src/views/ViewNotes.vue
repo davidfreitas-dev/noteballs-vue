@@ -1,10 +1,13 @@
 <template>
   <div class="container">
-    <template v-if="storeNotes.notes.length" v-for="note in storeNotes.notes">
+    <template 
+      v-if="storeNotes.notes.length" 
+      v-for="note in storeNotes.notes"
+    >
       <NoteSheet :note="note" @deleteNote="toggleModal" />
     </template>
 
-    <span v-if="!storeNotes.notes.length" class="p-10 mx-auto text-center">
+    <span v-if="!storeNotes.notes.length" class="no-notes">
       Você ainda não adicionou nenhuma nota
     </span>
   </div>
@@ -13,13 +16,13 @@
 </template>
 
 <script setup>
-  import { ref } from 'vue'
-
-  import { useStoreNotes } from '@/stores/storeNotes' 
-
+  /* COMPONENTS IMPORTS */
   import NoteSheet from '@/components/NoteSheet.vue'
-
   import ConfirmModal from '@/components/ConfirmModal.vue'
+
+  /* IMPORTS */
+  import { ref } from 'vue'
+  import { useStoreNotes } from '@/stores/storeNotes' 
 
   const storeNotes = useStoreNotes()  
 
@@ -29,10 +32,10 @@
     showModal.value = !showModal.value
   }
 
-  const deleteNote = (confirm) => {
+  const deleteNote = (response) => {
     toggleModal()
     
-    if (confirm) {
+    if (response) {
       storeNotes.deleteNote(storeNotes.selectedNoteId)
       storeNotes.setLocalNotes()
     }
@@ -42,5 +45,8 @@
 <style scoped>
   .container {
     @apply flex items-center flex-wrap
+  }
+  .no-notes {
+    @apply p-10 mx-auto text-center
   }
 </style>

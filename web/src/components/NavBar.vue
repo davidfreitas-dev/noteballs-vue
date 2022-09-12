@@ -1,38 +1,47 @@
 <template>    
     <nav class="navbar">
-        <div class="container">
-            <a href="#" class="logo">
-                <span>
-                    Noteballs
-                </span>
-            </a>
+        <a href="#" class="nav-logo">
+            <span>Noteballs</span>
+        </a>
 
-            <div class="nav-links">
-                <button @click="$emit('handleAddNote')">
-                    <font-awesome-icon icon="fa-solid fa-plus" class="text-xl" />
-                </button>
-            </div>
+        <div class="nav-links">
+            <button class="group" @click="handleAddNote">
+                <font-awesome-icon icon="fa-solid fa-plus" />
+
+                <span class="btn-text">
+                    <span class="pl-2"></span>
+                    Novo
+                </span>
+            </button>
         </div>
     </nav>
 </template>
 
+<script setup>
+    const emit = defineEmits(['handleAddNote'])
+
+    const handleAddNote = () => {
+        emit('handleAddNote')
+    }
+</script>
+
 <style scoped>
 .navbar {
-    @apply px-5 py-3 bg-blue-500
+    @apply bg-blue-500 flex flex-wrap justify-between items-center mx-auto px-5 md:px-20 py-3
 }
-.container {
-    @apply flex flex-wrap justify-between items-center mx-auto
-}
-.logo {
+.nav-logo {
     @apply flex items-center
 }
-.logo span {
+.nav-logo span {
     @apply self-center text-xl font-semibold whitespace-nowrap text-white
 }
 .nav-links {
     @apply w-auto
 }
 .nav-links button {
-    @apply w-10 h-10 rounded-full text-white bg-blue-400
+    @apply bg-blue-400 rounded-full px-3.5 h-10 text-white flex items-center
+}
+.btn-text {
+    @apply max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-500 ease-linear
 }
 </style>

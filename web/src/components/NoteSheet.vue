@@ -63,10 +63,10 @@
 
 <style scoped>
 .note {
-    @apply bg-amber-200 flex flex-col justify-between rounded-2xl shadow-lg p-3 mx-1 mb-3.5 w-full sm:w-[47%] md:w-[32%] lg:w-[23%] h-[230px]
+    @apply bg-amber-200 flex flex-col justify-between rounded-2xl shadow-lg p-3 mx-1 mb-3.5 w-full sm:w-[48%] md:w-[32%] lg:w-[24%] h-[230px]
 }
 .note-content {
-    @apply p-2
+    @apply p-2 font-semibold text-zinc-800
 }
 .note-content textarea {
     @apply bg-amber-200 placeholder:text-amber-500 w-full resize-none focus:outline-none
@@ -75,7 +75,7 @@
     @apply flex justify-between items-center mt-5
 }
 .footer p {
-    @apply font-light text-sm px-2
+    @apply text-sm px-2
 }
 .actions button {
     @apply bg-zinc-800 hover:bg-zinc-900 text-white w-8 h-8 mr-1 rounded-full

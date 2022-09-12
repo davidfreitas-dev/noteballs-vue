@@ -1,8 +1,12 @@
 <template>
   <div class="container">
-    <template v-for="note in storeNotes.notes">
+    <template v-if="storeNotes.notes.length" v-for="note in storeNotes.notes">
       <NoteSheet :note="note" @deleteNote="toggleModal" />
     </template>
+
+    <span v-if="!storeNotes.notes.length" class="p-10 text-center">
+      Você ainda não adicionou nenhuma nota
+    </span>
   </div>
   
   <ConfirmModal v-if="showModal" @handleDeleteNote="deleteNote" />
@@ -10,6 +14,7 @@
 
 <script setup>
   import { ref } from 'vue'
+
   import { useStoreNotes } from '@/stores/storeNotes' 
 
   import NoteSheet from '@/components/NoteSheet.vue'

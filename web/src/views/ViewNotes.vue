@@ -4,7 +4,7 @@
       <NoteSheet :note="note" @deleteNote="toggleModal" />
     </template>
 
-    <span v-if="!storeNotes.notes.length" class="p-10 text-center">
+    <span v-if="!storeNotes.notes.length" class="p-10 mx-auto text-center">
       Você ainda não adicionou nenhuma nota
     </span>
   </div>

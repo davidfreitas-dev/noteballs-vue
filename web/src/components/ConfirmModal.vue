@@ -5,15 +5,15 @@
                 <div class="modal-content">
                     <div class="modal-text">
                         <p>
-                            Are you sure that you want delete this note?
+                            Tem certeza que quer excluir esta nota?
                         </p>
                     </div>
                     <div class="modal-actions">
                         <button class="btn-cancel" type="button" @click="$emit('handleDeleteNote', false)">
-                            Cancel
+                            Cancelar
                         </button>
                         <button class="btn-confirm" type="button" @click="$emit('handleDeleteNote', true)">
-                            Confirm
+                            Confirmar
                         </button>
                     </div>
                 </div>

@@ -27,7 +27,6 @@ export const useStoreNotes = defineStore('storeNotes', {
             const note = {
                 id: uuidv4(),
                 content: '',
-                readMode: false,
                 dtRegister: `${day} de ${months[month]}`
             }
 
@@ -35,6 +34,7 @@ export const useStoreNotes = defineStore('storeNotes', {
         },
         deleteNote(id) {
             const i = this.notes.findIndex(note => note.id === id)
+            
             this.notes.splice(i, 1)
             this.selectedNoteId = ''
         }

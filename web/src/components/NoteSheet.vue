@@ -1,40 +1,27 @@
 <template>
     <div class="note">
         <div class="note-content">
-            <textarea 
-                v-if="!note.readMode" 
+            <textarea
                 v-model="note.content"
+                v-debounce:500ms="handleSave"
                 placeholder="Digite aqui..."
                 maxlength="180"
                 rows="6"
             >
             </textarea>
-
-            <p v-if="note.readMode">
-                {{ note.content }}
-            </p>
         </div>
-        <div class="footer">
-            <p>
-                {{ note.dtRegister }}
-            </p>
 
-            <span class="actions">
-                <button @click="handleEdit">
-                    <font-awesome-icon :icon="btnIconClass" class="text-xs" />
-                </button>
-                
-                <button @click="handleDeleteNote">
-                    <font-awesome-icon icon="fa-solid fa-trash" class="text-xs" />
-                </button>
-            </span>
+        <div class="footer">
+            <span>{{ note.dtRegister }}</span>
+
+            <button @click="handleDeleteNote">
+                <font-awesome-icon icon="fa-solid fa-trash" />
+            </button>
         </div>
     </div>
 </template>
 
-<script setup>  
-    import { computed, watch } from 'vue'  
-
+<script setup> 
     import { useStoreNotes } from '@/stores/storeNotes' 
 
     const storeNotes = useStoreNotes()
@@ -43,20 +30,8 @@
 
     const props = defineProps(['note'])
 
-    const btnIconClass = computed(() => {
-        return props.note.readMode 
-            ? 'fa-solid fa-pen' 
-            : 'fa-solid fa-check'
-    })
-
-    watch(() => props.note.readMode, (newValue) => {
-        if (newValue) {
-            storeNotes.setLocalNotes()
-        }
-    })
-
-    const handleEdit = () => {
-        props.note.readMode = !props.note.readMode
+    const handleSave = () => {
+        storeNotes.setLocalNotes()
     }
 
     const handleDeleteNote = () => {
@@ -75,16 +50,13 @@
 .note-content textarea {
     @apply bg-amber-200 placeholder:text-amber-500 w-full resize-none focus:outline-none
 }
-.note-content p {
-    @apply whitespace-pre-line
-}
 .footer {
     @apply flex justify-between items-center
 }
-.footer p {
+.footer span {
     @apply text-sm px-2 break-words
 }
-.actions button {
-    @apply bg-zinc-800 hover:bg-zinc-900 text-white w-8 h-8 mr-1 rounded-full
+.footer button {
+    @apply bg-zinc-800 hover:bg-zinc-900 text-white text-sm rounded-full w-8 h-8 mr-1
 }
 </style>

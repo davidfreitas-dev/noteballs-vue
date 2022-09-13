@@ -5,7 +5,8 @@
                 v-if="!note.readMode" 
                 v-model="note.content"
                 placeholder="Digite aqui..."
-                rows="5"
+                maxlength="180"
+                rows="6"
             >
             </textarea>
 
@@ -69,7 +70,7 @@
     @apply bg-amber-200 flex flex-col justify-between rounded-2xl shadow-lg p-3 mx-1 mb-3.5 w-full sm:w-[48%] md:w-[32%] lg:w-[24%] h-[230px]
 }
 .note-content {
-    @apply p-2 font-semibold text-zinc-800
+    @apply text-zinc-800 font-semibold p-2
 }
 .note-content textarea {
     @apply bg-amber-200 placeholder:text-amber-500 w-full resize-none focus:outline-none
@@ -78,10 +79,10 @@
     @apply whitespace-pre-line
 }
 .footer {
-    @apply flex justify-between items-center mt-5
+    @apply flex justify-between items-center
 }
 .footer p {
-    @apply text-sm px-2
+    @apply text-sm px-2 break-words
 }
 .actions button {
     @apply bg-zinc-800 hover:bg-zinc-900 text-white w-8 h-8 mr-1 rounded-full

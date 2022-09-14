@@ -12,13 +12,13 @@
     </span>
   </div>
   
-  <ConfirmModal v-if="showModal" @handleDeleteNote="deleteNote" />
+  <DeleteModal v-if="showModal" @handleDeleteNote="deleteNote" />
 </template>
 
 <script setup>
   /* COMPONENTS IMPORTS */
   import NoteSheet from '@/components/NoteSheet.vue'
-  import ConfirmModal from '@/components/ConfirmModal.vue'
+  import DeleteModal from '@/components/DeleteModal.vue'
 
   /* IMPORTS */
   import { ref } from 'vue'

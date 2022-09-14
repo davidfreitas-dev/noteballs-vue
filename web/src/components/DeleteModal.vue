@@ -27,8 +27,8 @@
                 </div>
               </div>
               <div class="modal-actions">
-                <button type="button" @click="handleAction(true)">Deactivate</button>
-                <button type="button" @click="handleAction(false)" ref="cancelButtonRef">Cancel</button>
+                <button type="button" @click="handleAction(true)">Confirmar</button>
+                <button type="button" @click="handleAction(false)">Cancelar</button>
               </div>
             </DialogPanel>
           </TransitionChild>

@@ -2,17 +2,16 @@
   <div class="container">
     <template 
       v-if="storeNotes.notes.length" 
-      v-for="note in storeNotes.notes"
-    >
+      v-for="note in storeNotes.notes">
       <NoteSheet :note="note" @deleteNote="toggleModal" />
     </template>
 
-    <span v-if="!storeNotes.notes.length" class="no-notes">
+    <span class="no-notes" v-if="!storeNotes.notes.length">
       Você ainda não adicionou nenhuma nota
     </span>
   </div>
   
-  <DeleteModal v-if="showModal" @handleDeleteNote="deleteNote" />
+  <DeleteModal ref="modal" @handleDeleteNote="deleteNote" />
 </template>
 
 <script setup>
@@ -22,15 +21,15 @@
 
   /* IMPORTS */
   import { ref } from 'vue'
-  import { useStoreNotes } from '@/stores/storeNotes' 
+  import { useStoreNotes } from '@/stores/storeNotes'
 
-  const storeNotes = useStoreNotes()  
-
-  const showModal = ref(false)
+  const modal = ref(null)
 
   const toggleModal = () => {
-    showModal.value = !showModal.value
-  }
+    modal.value?.toggleModal()
+  } 
+
+  const storeNotes = useStoreNotes()
 
   const deleteNote = (response) => {
     toggleModal()

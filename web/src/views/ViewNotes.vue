@@ -11,7 +11,7 @@
     </span>
   </div>
   
-  <DeleteModal ref="modal" @handleDeleteNote="deleteNote" />
+  <DeleteModal ref="modal" @onModal="deleteNote" />
 </template>
 
 <script setup>

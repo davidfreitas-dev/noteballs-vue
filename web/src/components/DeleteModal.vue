@@ -43,7 +43,7 @@
   import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
   import { ExclamationTriangleIcon } from '@heroicons/vue/24/outline'
 
-  const emit = defineEmits(['handleDeleteNote'])
+  const emit = defineEmits(['onModal'])
   
   const open = ref(false)
 
@@ -52,7 +52,7 @@
   }
 
   const handleAction = (response) => {
-    emit('handleDeleteNote', response)
+    emit('onModal', response)
   }
 
   defineExpose({toggleModal})

@@ -1,22 +1,12 @@
-<template>
-  <NavBar @handleAddNote="handleAddNote" />
-  
-  <div class="w-full">
-    <RouterView />    
-  </div>
+<template>  
+  <RouterView />
 </template>
 
 <script setup>
   import { ref, onMounted } from 'vue'  
   import { useStoreNotes } from '@/stores/storeNotes'
-  import NavBar from '@/components/NavBar.vue' 
   
   const storeNotes = useStoreNotes()
-  
-  const handleAddNote = () => {
-    storeNotes.addNote()
-    storeNotes.setLocalNotes()    
-  }
 
   const notes = ref(null)
   

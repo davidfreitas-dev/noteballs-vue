@@ -4,13 +4,18 @@
   import Dialog from '@/components/Dialog.vue'
   import Note from '@/components/Note.vue'
 
+  const storeNotes = useStoreNotes()
+
+  const handleAddNote = () => {
+    storeNotes.addNote()
+    storeNotes.setLocalNotes()    
+  }
+
   const modal = ref(null)
 
   const toggleModal = () => {
     modal.value?.toggleModal()
   } 
-
-  const storeNotes = useStoreNotes()
 
   const deleteNote = (response) => {
     toggleModal()
@@ -25,7 +30,10 @@
 <template>  
   <div class="flex flex-col md:flex-row">
     <section class="sidebar flex justify-end md:justify-center w-full md:w-32 md:h-screen shadow-lg">
-      <span class="flex justify-center items-center w-11 h-11 rounded-full bg-zinc-900 text-white text-xl cursor-pointer mx-5 my-3">
+      <span
+        @click="handleAddNote"
+        class="flex justify-center items-center w-11 h-11 rounded-full bg-zinc-900 text-white text-xl cursor-pointer mx-5 my-3"
+      >
         <font-awesome-icon icon="fa-solid fa-plus" />
       </span>
     </section>

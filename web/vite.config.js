@@ -5,7 +5,7 @@ import vue from '@vitejs/plugin-vue'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/noteballs-vue/',
+  base: '/small-notes/',
   plugins: [vue()],
   resolve: {
     alias: {

@@ -1,10 +1,7 @@
-<template>  
-  <RouterView />
-</template>
-
 <script setup>
   import { ref, onMounted } from 'vue'  
   import { useStoreNotes } from '@/stores/storeNotes'
+  import Sidebar from './components/Sidebar.vue';
   
   const storeNotes = useStoreNotes()
 
@@ -21,3 +18,10 @@
     storeNotes.setNotes(notes)
   })
 </script>
+
+<template> 
+  <div class="flex flex-col md:flex-row">
+    <Sidebar />
+    <RouterView />
+  </div> 
+</template>

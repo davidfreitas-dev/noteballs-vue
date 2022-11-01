@@ -16,18 +16,18 @@
                   </div>
                   <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
                     <DialogTitle as="h3" class="text-lg font-medium leading-6 text-gray-900">
-                      Excluir Nota
+                      Quer mesmo excluir esta nota?
                     </DialogTitle>
                     <div class="mt-2">
                       <p class="text-sm text-gray-500">
-                        Tem certeza que deseja excluir esta nota? Esta ação não poderá ser desfeita.
+                        Você está prestes a excluir esta nota permanetemente. Esta ação não poderá ser desfeita.
                       </p>
                     </div>
                   </div>
                 </div>
               </div>
               <div class="modal-actions">
-                <button type="button" @click="handleAction(true)">Confirmar</button>
+                <button type="button" @click="handleAction(true)">Excluir Permanetemente</button>
                 <button type="button" @click="handleAction(false)">Cancelar</button>
               </div>
             </DialogPanel>
@@ -60,10 +60,10 @@
 
 <style>
 .modal-actions {
-    @apply bg-gray-50 px-4 py-3 sm:flex sm:justify-end sm:px-6
+    @apply bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6
 }
 .modal-actions button:first-child {
-    @apply inline-flex w-full justify-center rounded-md border border-transparent bg-green-400 px-4 py-2 text-base font-medium text-white shadow-sm focus:outline-none sm:ml-3 sm:w-auto sm:text-sm
+    @apply inline-flex w-full justify-center rounded-md border border-transparent bg-red-500 px-4 py-2 text-base font-medium text-white shadow-sm focus:outline-none sm:ml-3 sm:w-auto sm:text-sm
 }
 .modal-actions button:last-child {
     @apply my-3 sm:m-0 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm focus:outline-none sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm

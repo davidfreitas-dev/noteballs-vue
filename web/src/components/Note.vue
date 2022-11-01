@@ -42,7 +42,7 @@
 
 <style scoped>
 .note {
-    @apply bg-amber-200 flex flex-col justify-between rounded-2xl shadow-lg p-3 mx-1 mb-3.5 w-full sm:w-[48%] md:w-[32%] lg:w-[24%] h-[230px]
+    @apply bg-amber-200 flex flex-col justify-between rounded-2xl shadow-lg p-3 m-2 w-full sm:w-[47%] md:w-[30%] lg:w-[23%] h-[230px]
 }
 .note-content {
     @apply text-zinc-800 font-normal p-2

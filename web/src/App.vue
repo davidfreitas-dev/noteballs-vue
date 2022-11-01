@@ -1,7 +1,7 @@
 <template>
   <NavBar @handleAddNote="handleAddNote" />
   
-  <div class="container">
+  <div class="w-full">
     <RouterView />    
   </div>
 </template>
@@ -31,9 +31,3 @@
     storeNotes.setNotes(notes)
   })
 </script>
-
-<style scoped>
-  .container {
-    @apply w-full md:w-11/12 mx-auto px-3 py-5
-  }
-</style>

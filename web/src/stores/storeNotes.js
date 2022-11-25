@@ -9,11 +9,13 @@ export const useStoreNotes = defineStore('storeNotes', {
         }
     },
     actions: {
+        getLocalNotes() {
+            const json = localStorage.getItem('notes')
+            const array = JSON.parse(json) || []
+            this.notes = Array.isArray(array) ? array : []
+        },
         setLocalNotes() {
             localStorage.setItem('notes', JSON.stringify(this.notes))
-        },
-        setNotes(notes) {
-            this.notes = notes
         },
         selectNote(id) {
             this.selectedNoteId = id

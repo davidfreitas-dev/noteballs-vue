@@ -2,7 +2,7 @@
   import { ref } from 'vue'
   import { useStoreNotes } from '@/stores/storeNotes'
   import Dialog from '@/components/Dialog.vue'
-  import Note from '@/components/Note.vue'
+  import Notes from '@/components/Notes.vue'
 
   const storeNotes = useStoreNotes()
 
@@ -28,17 +28,11 @@
       Notas
     </div>
 
-    <div class="notes flex items-start flex-wrap">
-      <template 
-        v-if="storeNotes.notes.length" 
-        v-for="note in storeNotes.notes"
-      >
-        <Note
-          :note="note"
-          @deleteNote="toggleModal"
-        />
-      </template>
-    </div>
+    <Notes
+      v-if="storeNotes.notes.length"
+      :notes="storeNotes.notes"
+      @deleteNote="toggleModal"
+    />
 
     <div
       v-if="!storeNotes.notes.length"

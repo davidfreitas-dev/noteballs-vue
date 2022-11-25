@@ -1,4 +1,5 @@
 <script setup>
+  import { onMounted } from 'vue';
   import { useStoreNotes } from '@/stores/storeNotes'
 
   const storeNotes = useStoreNotes()
@@ -7,6 +8,16 @@
     storeNotes.addNote()
     storeNotes.setLocalNotes()    
   }
+
+  const checkNotes = () => {
+    if (!storeNotes.notes.length) return handleAddNote()
+  }
+
+  onMounted(() => {
+    setTimeout(() => {
+      checkNotes()
+    }, 100);
+  })
 </script>
 
 <template>

@@ -20,7 +20,7 @@ export const useStoreNotes = defineStore('storeNotes', {
         selectNote(id) {
             this.selectedNoteId = id
         },
-        addNote() {
+        addNote(color) {
             const date = new Date();
             const day = String(date.getDate()).padStart(2, '0')
             const months = [ 'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
@@ -29,6 +29,7 @@ export const useStoreNotes = defineStore('storeNotes', {
             const note = {
                 id: uuidv4(),
                 content: '',
+                color: color,
                 dtRegister: `${day} de ${months[month]}`
             }
 

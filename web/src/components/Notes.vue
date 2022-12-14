@@ -20,12 +20,14 @@
         <div
             v-for="note in notes"
             :key="note"
+            :class="`bg-${note.color}`"
             class="note"
         >
-            <div class="note-content">
+            <div class="note-content" :class="`bg-${note.color}`">
                 <textarea
                     v-model="note.content"
                     v-debounce:500ms="handleSave"
+                    :class="`bg-${note.color}`"
                     placeholder="Digite aqui..."
                     maxlength="180"
                     rows="6"
@@ -49,13 +51,13 @@
     @apply flex items-start flex-wrap
 }
 .note {
-    @apply bg-amber-200 flex flex-col justify-between rounded-2xl shadow-lg p-3 m-2 w-full sm:w-[47%] md:w-[30%] lg:w-[23%] h-[230px]
+    @apply flex flex-col justify-between rounded-2xl shadow-lg p-3 m-2 w-full sm:w-[47%] md:w-[30%] lg:w-[23%] h-[230px]
 }
 .note-content {
     @apply text-zinc-800 font-normal p-2
 }
 .note-content textarea {
-    @apply bg-amber-200 placeholder:text-amber-500 w-full resize-none focus:outline-none
+    @apply  placeholder:text-gray-500 w-full resize-none focus:outline-none
 }
 .footer {
     @apply flex justify-between items-center

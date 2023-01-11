@@ -1,17 +1,10 @@
-import { createRouter, createWebHashHistory } from "vue-router"
-import NotesView from "@/views/NotesView.vue"
-
-const routes = [
-    {
-        path: '/',
-        name: 'notes',
-        component: NotesView
-    }
-]
+import { createRouter, createWebHistory } from "vue-router"
 
 const router = createRouter({
-    history: createWebHashHistory(),
-    routes
+    history: createWebHistory(import.meta.env.BASE_URL),
+    routes: [
+        { path: '/', component: () => import('../pages/Notes.vue') },
+    ]
 })
 
 export default router
